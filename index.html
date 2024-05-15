@@ -542,13 +542,15 @@ $(document).ready(function() {
         event.preventDefault(); // Prevent form submission
 
         // Get form data
-        var formData = $(this).serialize();
+        var formData = new FormData(this);
 
         // Send AJAX request
         $.ajax({
-            url: '/contact-form.php',
+            url: 'https://eolrm5qwlz8r7h2.m.pipedream.net',
             type: 'POST',
-            data: formData,
+            processData: false,  // Prevent jQuery from automatically processing form data
+        contentType: false,  // Prevent jQuery from setting the content type
+            data: formData, // Convert form data to JSON string
             success: function(response) {
                 // Handle success response
                 location.reload();
